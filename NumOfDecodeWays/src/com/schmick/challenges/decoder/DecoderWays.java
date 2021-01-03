@@ -1,3 +1,11 @@
+package com.schmick.challenges.decoder;
+
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.text.MessageFormat;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /**
  * Daily Coding Challenge (December 2020). Rated: Medium.
  *
@@ -20,12 +28,23 @@ public class DecoderWays {
     private static final String SHORT_ENCODING = "145645";
     private static final String LONG_ENCODING = "1456456351435";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
         new DecoderWays().findDecoderCount(SHORT_ENCODING);
         new DecoderWays().findDecoderCount(LONG_ENCODING);
+
+        SecureRandom sha1s = SecureRandom.getInstanceStrong();
+
+        new DecoderWays().findDecoderCount(
+                IntStream.generate(() -> sha1s.nextInt(50) + 1).
+                        limit(100).
+                        mapToObj((i) -> String.valueOf(i)).collect(Collectors.joining()));
     }
 
     private void findDecoderCount(String encodedStr) {
+
+        if (encodedStr.length() > 20) {
+            System.out.println(String.format("Encoded string = %1$.20s", encodedStr));
+        }
 
         // baseline number is the number of digits in the string or length
         int decoderCount = encodedStr.length();

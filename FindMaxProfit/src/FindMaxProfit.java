@@ -1,11 +1,11 @@
 import java.util.Arrays;
+import java.util.IntSummaryStatistics;
 import java.util.Optional;
 import java.util.Random;
 import java.util.stream.Collectors;
 
 /**
  * From The Daily Coding Problem #731 [Easy]:
- *
  * <pr>
  * This problem was asked by Facebook.
  * <p>
@@ -38,6 +38,9 @@ public class FindMaxProfit {
     System.out.printf("Max profit of prices (%s) = %d",
         Arrays.stream(prices).boxed().map(String::valueOf).collect(Collectors.joining(",")),
         new FindMaxProfit().calculateProfit(prices.length - 1, 0));
+    IntSummaryStatistics intSummaryStatistics = Arrays.stream(prices).summaryStatistics();
+    System.out.printf("\nMax price = %d, \nMin price = %d", intSummaryStatistics.getMax(),
+        intSummaryStatistics.getMin());
   }
 
   private int calculateProfit(int startPos, int maxProfit) {
@@ -46,8 +49,11 @@ public class FindMaxProfit {
       return maxProfit;
     }
 
-    if ((prices[startPos] - prices[startPos - 1]) > maxProfit) {
-      maxProfit = prices[startPos] - prices[startPos - 1];
+    for (int i = startPos; i > 0; i--) {
+      var profit = prices[startPos] - prices[i - 1] ;
+      if (profit > maxProfit) {
+        maxProfit = profit;
+      }
     }
 
     // tail recursion by passing maxProfit

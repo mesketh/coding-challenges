@@ -39,7 +39,8 @@ public class FindMaxProfit {
         Arrays.stream(prices).boxed().map(String::valueOf).collect(Collectors.joining(",")),
         new FindMaxProfit().calculateProfit(prices.length - 1, 0));
     IntSummaryStatistics intSummaryStatistics = Arrays.stream(prices).summaryStatistics();
-    System.out.printf("\nMax price = %d, \nMin price = %d", intSummaryStatistics.getMax(),
+    System.out.printf("\nMax price = %d, \nMin price = %d",
+        intSummaryStatistics.getMax(),
         intSummaryStatistics.getMin());
   }
 

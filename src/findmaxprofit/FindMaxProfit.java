@@ -1,3 +1,5 @@
+package findmaxprofit;
+
 import java.util.Arrays;
 import java.util.IntSummaryStatistics;
 import java.util.Optional;

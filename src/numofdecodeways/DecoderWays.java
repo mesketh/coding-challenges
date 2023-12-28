@@ -1,8 +1,7 @@
-package com.schmick.challenges.decoder;
+package numofdecodeways;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
-import java.text.MessageFormat;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 

@@ -1,7 +1,10 @@
-package com.schmick.challenges.floodfill;
+package floodfillvariant;
 
-import java.awt.*;
-import java.util.*;
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Spliterator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
